@@ -20,6 +20,7 @@
       position: relative;
       width: 100%;
       height: 100%;
+      text-align: center; /* Metinlerin ortalanmasını sağladım */
     }
 
     button {
@@ -50,25 +51,43 @@
     }
 
     #catImg {
-      position: fixed; /* Resmi sabit yapmak için */
-      width: 180px; /* Resmi daha da büyüttük */
+      position: fixed;
+      width: 180px;
       z-index: 3;
       left: 50%;
-      top: 25%; /* Resmi daha da yukarı aldık */
-      transform: translate(-50%, -50%); /* Yine ortada olacak */
-      pointer-events: none; /* Resme tıklanmasını engellemek için */
+      top: 25%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    #successMessage {
+      display: none;
+      font-size: 24px;
+      color: green;
+      margin-top: 20px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Kedi resmini büyütüp yukarı aldık -->
     <img id="catImg" src="https://img-s2.onedio.com/id-62fe0f68a162c20361541fc1/rev-0/w-600/h-602/f-jpg/s-5460cea8b32484a125104cdc2017691ffe34346b.jpg" alt="Tatlı Kedi">
     <button id="redBtn" title="Kırmızı butona basarsan konuşmayı keseceğiz">Konuşmayı Keseceğiz</button>
     <button id="greenBtn" title="Yeşil butona basarsan konuşmayı kesmeyeceğiz">Konuşmayı Kesmeyeceğiz</button>
+
+    <!-- Başarı mesajı ekledim, gizli olarak başlıyor -->
+    <div id="successMessage">Evet, doğru cevap! wp gel!</div>
   </div>
 
   <script>
+    const greenBtn = document.getElementById("greenBtn");
+    const successMessage = document.getElementById("successMessage");
+
+    // Yeşil butona tıklandığında mesajı gösterecek fonksiyon
+    greenBtn.addEventListener("click", function() {
+      successMessage.style.display = "block";  // Mesajı göster
+    });
+
     const redBtn = document.getElementById("redBtn");
 
     function moveRedButton() {
