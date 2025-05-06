@@ -50,26 +50,26 @@
     }
 
     #catImg {
-      position: absolute;
-      width: 80px;
+      position: fixed; /* Resmi sabit yapmak için */
+      width: 180px; /* Resmi daha da büyüttük */
       z-index: 3;
-      transform: translate(-50%, -100%);
       left: 50%;
-      top: 50%;
-      pointer-events: none;
+      top: 25%; /* Resmi daha da yukarı aldık */
+      transform: translate(-50%, -50%); /* Yine ortada olacak */
+      pointer-events: none; /* Resme tıklanmasını engellemek için */
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img id="catImg" src="https://cdn.pixabay.com/photo/2021/11/27/15/00/cat-6827506_1280.png" alt="kedi">
+    <!-- Kedi resmini büyütüp yukarı aldık -->
+    <img id="catImg" src="https://img-s2.onedio.com/id-62fe0f68a162c20361541fc1/rev-0/w-600/h-602/f-jpg/s-5460cea8b32484a125104cdc2017691ffe34346b.jpg" alt="Tatlı Kedi">
     <button id="redBtn" title="Kırmızı butona basarsan konuşmayı keseceğiz">Konuşmayı Keseceğiz</button>
     <button id="greenBtn" title="Yeşil butona basarsan konuşmayı kesmeyeceğiz">Konuşmayı Kesmeyeceğiz</button>
   </div>
 
   <script>
     const redBtn = document.getElementById("redBtn");
-    const catImg = document.getElementById("catImg");
 
     function moveRedButton() {
       const maxX = window.innerWidth - redBtn.offsetWidth;
@@ -79,8 +79,6 @@
       redBtn.style.left = newX + "px";
       redBtn.style.top = newY + "px";
       redBtn.style.transform = "translate(0, 0)";
-      catImg.style.left = (newX + redBtn.offsetWidth / 2) + "px";
-      catImg.style.top = newY + "px";
     }
 
     redBtn.addEventListener("mouseenter", moveRedButton);
