@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kırmızı Buton Sitesi</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fdf2f8;
+      font-family: sans-serif;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    button {
+      padding: 20px 40px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      position: absolute;
+      z-index: 2;
+    }
+
+    #redBtn {
+      background-color: red;
+      color: white;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #greenBtn {
+      background-color: green;
+      color: white;
+      left: 50%;
+      top: 60%;
+      transform: translate(-50%, -50%);
+    }
+
+    #catImg {
+      position: absolute;
+      width: 80px;
+      z-index: 3;
+      transform: translate(-50%, -100%);
+      left: 50%;
+      top: 50%;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img id="catImg" src="https://cdn.pixabay.com/photo/2021/11/27/15/00/cat-6827506_1280.png" alt="kedi">
+    <button id="redBtn" title="Kırmızı butona basarsan konuşmayı keseceğiz">Konuşmayı Keseceğiz</button>
+    <button id="greenBtn" title="Yeşil butona basarsan konuşmayı kesmeyeceğiz">Konuşmayı Kesmeyeceğiz</button>
+  </div>
+
+  <script>
+    const redBtn = document.getElementById("redBtn");
+    const catImg = document.getElementById("catImg");
+
+    function moveRedButton() {
+      const maxX = window.innerWidth - redBtn.offsetWidth;
+      const maxY = window.innerHeight - redBtn.offsetHeight;
+      const newX = Math.floor(Math.random() * maxX);
+      const newY = Math.floor(Math.random() * maxY);
+      redBtn.style.left = newX + "px";
+      redBtn.style.top = newY + "px";
+      redBtn.style.transform = "translate(0, 0)";
+      catImg.style.left = (newX + redBtn.offsetWidth / 2) + "px";
+      catImg.style.top = newY + "px";
+    }
+
+    redBtn.addEventListener("mouseenter", moveRedButton);
+    redBtn.addEventListener("touchstart", moveRedButton); // telefonda da kaçırsın diye
+  </script>
+</body>
+</html>
